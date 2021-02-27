@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Избранное
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,19 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Избранное</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- app-explore-container name="Избранные города"></app-explore-container -->
+  <ion-grid *ngIf="weatherService.status">
+    <ion-row>
+      <ion-col [size]="3" size-lg="3" *ngFor="let favorite of weatherService._favorites | keyvalue">
+        <div (click)="gotoTown(favorite.key)">
+          <ion-icon class="favorite" src="/assets/img/star-delete.svg" *ngIf="isFavorite(favorite.key)"></ion-icon>
+          <p>{{ favorite.value }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

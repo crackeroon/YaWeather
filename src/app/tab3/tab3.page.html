@@ -1,17 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title *ngIf="status">{{ weather.name }} Погода</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="status">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">{{ weather.name }} Погода</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  Температура: {{ weather.main.temp }} °C<br/>
+  Влажность: {{ weather.main.humidity }}%<br/>
+  Давление: {{ weather.main.pressure }} кПа<br/>
+  <br/>
+  <ion-button *ngIf="!isFavorite(weather.id)" (click)="addFavorite(weather.id, weather.name)">Добавить в Избранное</ion-button><br/>
+  <ion-button *ngIf="isFavorite(weather.id)" (click)="deleteFavorite(weather.id)">Удалить из Избранного</ion-button><br/>
 </ion-content>

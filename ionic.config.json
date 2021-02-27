@@ -1,5 +1,7 @@
 {
   "name": "YaWeather",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
