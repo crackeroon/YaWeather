@@ -40,10 +40,12 @@ export class Tab3Page {
 
   deleteFavorite(id) {
     delete this.weatherService._favorites[id];
+    this.weatherService.saveFavorites();
   }
 
   addFavorite(id, name) {
     this.weatherService._favorites[id] = name;
+    this.weatherService.saveFavorites();
   }
 
   isFavorite(id) {

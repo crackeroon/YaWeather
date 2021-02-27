@@ -31,7 +31,7 @@ export class WeatherService {
     )
   }
 
-  protected async saveFavorites() {
+  async saveFavorites() {
     await this.storage.set(this._key, JSON.stringify(this._favorites).toString());
   }
 
